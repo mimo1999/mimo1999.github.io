@@ -10,7 +10,7 @@ export interface Project {
   github?: string;
   demo?: string;
   featured: boolean;
-  category: "healthcare-ai" | "genai" | "mlops" | "infrastructure";
+  category: "healthcare-ai" | "genai" | "mlops" | "infrastructure" | "computer-vision";
   status: "production" | "research" | "open-source";
   architecture?: string[];
   benchmarks?: { label: string; value: string; note?: string }[];
@@ -206,6 +206,59 @@ export const projects: Project[] = [
     category: "genai",
     status: "open-source",
     github: "https://github.com/mimo1999/Flowify_toolkit",
+  },
+  {
+    title: "Hidden Shape Reconstruction",
+    slug: "hidden-shape-reconstruction",
+    tagline: "Recovering 3D shape hidden beneath draped cloth from a single RGB image",
+    description:
+      "Predicts the concealed 3D shape of an object under draped cloth from a single photo, via an end-to-end pipeline: Blender physics-based cloth-drape simulation over 100 real 3D scans, paired RGB/distance-map rendering, and a MobileNetV2 U-Net that learns to invert the draping physics.",
+    longDescription:
+      "Mirrors a real perceptual ability — inferring the shape of a fully-covered object (a car under a tarp, a bust under a veil) just from how cloth drapes over it. Built an end-to-end pipeline from selecting 3D objects, physically simulating cloth draping over them in Blender 3.6, rendering a paired image dataset, to training a neural network that inverts the draping process. 100 everyday objects from OmniObject3D were cleaned and unit-normalised with PyMeshLab, then draped with a physically simulated cotton-like cloth; two rendering batches (100 objects x 50 viewpoints each) produced 10,000 paired RGB/distance-map images. A MobileNetV2-encoder U-Net (~2.55M params) learns to map the RGB cloth image directly to a distance map encoding hidden geometry, trained with a hybrid SSIM + foreground-weighted Charbonnier loss and wide zoom augmentation to generalize across both rendering batches' framing conventions.",
+    technologies: [
+      "PyTorch",
+      "Blender (bpy)",
+      "PyMeshLab",
+      "MobileNetV2",
+      "U-Net",
+      "OpenCV",
+      "Flask",
+      "Python",
+    ],
+    metrics: [
+      { label: "SSIM", value: "0.911" },
+      { label: "RMSE", value: "0.078" },
+      { label: "MAE", value: "0.020" },
+      { label: "Contact IoU", value: "0.65" },
+    ],
+    benchmarks: [
+      { label: "Held-out SSIM", value: "0.9107" },
+      { label: "Held-out RMSE", value: "0.0776" },
+      { label: "Held-out MAE", value: "0.0201" },
+      { label: "Chamfer Distance", value: "0.0298" },
+      { label: "Contact-region IoU", value: "0.65", note: "vs. independent 3D geometric ground truth" },
+      { label: "Contact-region pixel accuracy", value: "0.98" },
+    ],
+    highlights: [
+      "End-to-end pipeline: mesh cleanup -> Blender cloth-drape physics simulation -> paired RGB/distance-map rendering -> training",
+      "100 real-world 3D scans (OmniObject3D) draped and rendered from 50 viewpoints each, pooled across two batches (10,000 paired images)",
+      "MobileNetV2 U-Net (~2.55M params) trained on a 4GB GPU, <500MB VRAM at batch 32",
+      "Hybrid SSIM + foreground-weighted Charbonnier loss prevents collapse to all-black predictions on background-heavy targets",
+      "Wide zoom augmentation (0.5x-1.4x) needed to generalize across two rendering batches with different object framing",
+      "Validated predicted contact regions against independent 3D geometric ground truth: 0.65 IoU, 0.98 pixel accuracy",
+      "Custom browser-based Flask + canvas annotation tool for manually labeling fabric-vs-contact regions on real photos",
+    ],
+    architecture: [
+      "Object Dataset (OmniObject3D)",
+      "Mesh Cleanup (PyMeshLab)",
+      "Blender Cloth-Drape Simulation",
+      "Paired RGB / Distance-Map Rendering",
+      "MobileUNet Training & Prediction",
+    ],
+    featured: true,
+    category: "computer-vision",
+    status: "open-source",
+    github: "https://github.com/mimo1999/hidden-shape-reconstruction",
   },
 ];
 

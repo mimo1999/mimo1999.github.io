@@ -14,6 +14,7 @@ const categoryColors: Record<Project["category"], string> = {
   genai: "bg-violet-500/10 text-violet-500 border-violet-500/20",
   mlops: "bg-orange-500/10 text-orange-500 border-orange-500/20",
   infrastructure: "bg-blue-500/10 text-blue-500 border-blue-500/20",
+  "computer-vision": "bg-pink-500/10 text-pink-500 border-pink-500/20",
 };
 
 const categoryLabels: Record<Project["category"], string> = {
@@ -21,6 +22,7 @@ const categoryLabels: Record<Project["category"], string> = {
   genai: "GenAI",
   mlops: "MLOps",
   infrastructure: "Infrastructure",
+  "computer-vision": "Computer Vision",
 };
 
 const statusColors: Record<Project["status"], string> = {
