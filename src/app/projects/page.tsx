@@ -13,6 +13,7 @@ export default function ProjectsPage() {
     { key: "healthcare-ai", label: "Healthcare AI" },
     { key: "genai", label: "Generative AI" },
     { key: "computer-vision", label: "Computer Vision" },
+    { key: "fintech", label: "FinTech" },
     { key: "mlops", label: "MLOps" },
     { key: "infrastructure", label: "Infrastructure" },
   ] as const;

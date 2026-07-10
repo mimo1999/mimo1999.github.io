@@ -15,6 +15,7 @@ const categoryColors: Record<Project["category"], string> = {
   mlops: "bg-orange-500/10 text-orange-500 border-orange-500/20",
   infrastructure: "bg-blue-500/10 text-blue-500 border-blue-500/20",
   "computer-vision": "bg-pink-500/10 text-pink-500 border-pink-500/20",
+  fintech: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
 };
 
 const categoryLabels: Record<Project["category"], string> = {
@@ -23,6 +24,7 @@ const categoryLabels: Record<Project["category"], string> = {
   mlops: "MLOps",
   infrastructure: "Infrastructure",
   "computer-vision": "Computer Vision",
+  fintech: "FinTech",
 };
 
 const statusColors: Record<Project["status"], string> = {

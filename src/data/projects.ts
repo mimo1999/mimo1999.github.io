@@ -10,7 +10,7 @@ export interface Project {
   github?: string;
   demo?: string;
   featured: boolean;
-  category: "healthcare-ai" | "genai" | "mlops" | "infrastructure" | "computer-vision";
+  category: "healthcare-ai" | "genai" | "mlops" | "infrastructure" | "computer-vision" | "fintech";
   status: "production" | "research" | "open-source";
   architecture?: string[];
   benchmarks?: { label: string; value: string; note?: string }[];
@@ -56,7 +56,7 @@ export const projects: Project[] = [
     featured: true,
     category: "healthcare-ai",
     status: "research",
-    github: "https://github.com/mimo1999",
+    github: "https://github.com/mimo1999/asd_detector",
   },
   {
     title: "Research Swarm",
@@ -259,6 +259,48 @@ export const projects: Project[] = [
     category: "computer-vision",
     status: "open-source",
     github: "https://github.com/mimo1999/hidden-shape-reconstruction",
+  },
+  {
+    title: "Invoice Management System",
+    slug: "invoice-management-system",
+    tagline: "Full-stack AR invoice management with an NL chatbot and ML predictions",
+    description:
+      "A full-stack web application for managing and analysing customer invoices — a data table UI for browsing, filtering, and editing invoice records, a natural-language chatbot for querying invoice data conversationally, and a Python model server for ML-based payment-behaviour predictions.",
+    longDescription:
+      "Built for accounts-receivable teams that need to track, query, and act on large volumes of customer invoices. A Java servlet backend (Tomcat) serves a React frontend and a REST-style API backed by MySQL, supporting invoice browsing/filtering by customer name, business code, or open-amount thresholds, inline edits, and per-customer outstanding-balance summaries. A Node.js/Dialogflow chatbot layer lets users ask plain-English questions (\"What is Acme Corp's outstanding balance?\") against the same data. A separate Python/Flask model server exposes ML-based payment-behaviour predictions over HTTP, decoupled from the Java backend so the inference layer can evolve independently.",
+    technologies: [
+      "Java",
+      "Apache Tomcat",
+      "React",
+      "MySQL",
+      "Node.js",
+      "Dialogflow",
+      "Python",
+      "Flask",
+    ],
+    metrics: [
+      { label: "Services", value: "4" },
+      { label: "API Endpoints", value: "9" },
+      { label: "Stack Layers", value: "3" },
+    ],
+    highlights: [
+      "Data table UI for browsing, filtering, and editing invoice records by customer name, business code, or open-amount thresholds",
+      "Natural-language chatbot (Node.js + Dialogflow) answering conversational queries over live invoice data",
+      "Python/Flask ML model server for payment-behaviour predictions, decoupled from the Java backend for independent deployment",
+      "Java servlet REST-style API backed by MySQL, with a CSV importer utility for seeding invoice data",
+      "9 endpoints spanning invoice retrieval, customer search/summary, invoice updates, and chat",
+    ],
+    architecture: [
+      "Browser (React)",
+      "Java Backend (Tomcat, Servlet API)",
+      "MySQL",
+      "Chatbot (Node.js, Dialogflow)",
+      "ML Model Server (Python/Flask)",
+    ],
+    featured: true,
+    category: "fintech",
+    status: "open-source",
+    github: "https://github.com/mimo1999/invoice-management-system",
   },
 ];
 
