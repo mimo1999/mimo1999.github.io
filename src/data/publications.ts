@@ -16,9 +16,9 @@ export interface ReproductionStudy {
   authors: string;
   year: string;
   venue: string;
-  originalMetric: string;
-  ourMetric: string;
-  gap: string;
+  metric: string;
+  result: string;
+  note: string;
   insights: string[];
   code?: string;
 }
@@ -40,33 +40,45 @@ export const publications: Publication[] = [
 
 export const reproductionStudies: ReproductionStudy[] = [
   {
-    paper: "Attention Is All You Need",
-    authors: "Vaswani et al.",
-    year: "2017",
-    venue: "NeurIPS",
-    originalMetric: "BLEU 28.4 (EN-DE)",
-    ourMetric: "BLEU 27.9",
-    gap: "-0.5 BLEU",
+    paper:
+      "DPU: Dual Prior Unfolding for Snapshot Compressive Imaging",
+    authors: "Zhang et al.",
+    year: "2024",
+    venue: "CVPR",
+    metric: "Average PSNR / SSIM",
+    result: "44.26 dB / 0.9814",
+    note: "Initial run scored 54.93 dB — investigated and traced to train/test overlap; rerun on a corrected held-out split produced this figure.",
     insights: [
-      "Reproduced with standard WMT14 EN-DE dataset and original hyperparameters",
-      "Learning rate warmup schedule is critical — without it, training diverges",
-      "Label smoothing contributes ~0.5 BLEU; easy to miss in the paper",
-      "Multi-GPU training required careful gradient accumulation to match batch size",
+      "First pass produced suspiciously high PSNR (54.9 dB); flagged and traced to train/test contamination in the data split",
+      "Reran the deep-unfolding pipeline on a corrected split — reproduced Swin Transformer-based unfolding stages end-to-end",
+      "Paper's reported numbers were not available to diff against directly, so results are reported standalone rather than as a gap",
     ],
   },
   {
-    paper: "Whisper: Robust Speech Recognition via Large-Scale Weak Supervision",
-    authors: "Radford et al., OpenAI",
-    year: "2022",
-    venue: "ICML 2023",
-    originalMetric: "WER 4.2% (LibriSpeech clean)",
-    ourMetric: "WER 4.6%",
-    gap: "+0.4% WER",
+    paper:
+      "CDFormer: When Degradation Prediction Embraces Diffusion Model for Blind Image Super-Resolution",
+    authors: "Liu et al.",
+    year: "2024",
+    venue: "CVPR",
+    metric: "PSNR / SSIM (Set5, x2 / Urban100, x4)",
+    result: "38.29 dB / 0.9617 · 27.09 dB / 0.8163",
+    note: "Full clean run across Set5, Set14, Urban100, and BSDS100 at x2/x3/x4; paper's own numbers weren't reproduced from source, so this is a standalone measurement.",
     insights: [
-      "Fine-tuned Whisper-small on pathological voice data for clinical domain adaptation",
-      "Standard Whisper degrades significantly on dysphonic speech",
-      "Domain adaptation with as few as 200 clinical samples recovers most performance",
-      "Spectrogram normalization strategy differs from standard LibriSpeech preprocessing",
+      "Reproduced the diffusion-prior degradation embedding pipeline for blind super-resolution end-to-end",
+      "Evaluated across 4 standard SR benchmarks (Set5, Set14, Urban100, BSDS100) at 3 upscaling factors",
+    ],
+  },
+  {
+    paper: "F3Loc: Fusion and Filtering for Floorplan Localization",
+    authors: "Chen et al.",
+    year: "2024",
+    venue: "CVPR",
+    metric: "Recall @ 1m / 0.1m (Gibson)",
+    result: "0.507 / 0.137",
+    note: "Evaluated across 4 network variants on a trimmed Gibson split; paper baseline not diffed directly.",
+    insights: [
+      "Reproduced the probabilistic filtering + multi-view geometry pipeline for sequential floorplan localization",
+      "Test set was intentionally trimmed for tractable runtime, so recall figures are on a smaller sample than the paper's",
     ],
   },
 ];

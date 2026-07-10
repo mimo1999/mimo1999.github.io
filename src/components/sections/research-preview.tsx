@@ -28,10 +28,10 @@ const researchAreas = [
   {
     icon: GitMerge,
     title: "Reproduction Studies",
-    subtitle: "2 Papers Reproduced",
+    subtitle: "CVPR 2024 Papers Reproduced",
     description:
-      "Independent reproductions of Attention Is All You Need and Whisper on clinical domain. Documented gaps, insights, and domain adaptation strategies.",
-    tags: ["Reproducibility", "Transformers", "ASR"],
+      "Independent reproductions of CVPR 2024 papers — diffusion-based super-resolution, snapshot compressive imaging, and floorplan localization. Documented pipelines, results, and reproducibility gotchas.",
+    tags: ["Reproducibility", "Computer Vision", "CVPR 2024"],
     href: "/research#reproductions",
   },
 ];

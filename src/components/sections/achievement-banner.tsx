@@ -1,13 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Briefcase, Building2, Stethoscope, Trophy } from "lucide-react";
+import { Award, Briefcase, Trophy } from "lucide-react";
 
 const achievements = [
   { icon: Award, value: "2", label: "US Patents Filed" },
-  { icon: Briefcase, value: "3+", label: "Years Experience" },
-  { icon: Building2, value: "8", label: "Enterprise Deployments" },
-  { icon: Stethoscope, value: "0.86", label: "Diagnostic Accuracy" },
+  { icon: Briefcase, value: "4+", label: "Years Experience" },
   { icon: Trophy, value: "2", label: "Hackathon Awards" },
 ];
 
@@ -15,7 +13,7 @@ export function AchievementBanner() {
   return (
     <section className="border-y border-border/50 bg-muted/20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-3 gap-6">
           {achievements.map((item, i) => {
             const Icon = item.icon;
             return (

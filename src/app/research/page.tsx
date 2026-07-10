@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { publications, reproductionStudies } from "@/data/publications";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { FileText, GitMerge, TrendingUp, TrendingDown } from "lucide-react";
+import { FileText, GitMerge } from "lucide-react";
 
 export default function ResearchPage() {
   return (
@@ -90,7 +90,7 @@ export default function ResearchPage() {
           Reproduction Studies
         </h2>
         <p className="text-sm text-muted-foreground mb-8">
-          Independent reproductions of foundational papers — documenting gaps, adaptation strategies, and insights.
+          Independent reproductions of CVPR/MICCAI 2024 papers — reconstructing pipelines, validating metrics, and documenting gotchas.
         </p>
         <div className="space-y-6">
           {reproductionStudies.map((study, i) => (
@@ -115,28 +115,20 @@ export default function ResearchPage() {
                   </div>
                 </div>
 
-                {/* Metrics comparison */}
-                <div className="grid grid-cols-3 gap-3 mb-5">
+                {/* Metric result */}
+                <div className="grid grid-cols-2 gap-3 mb-3">
                   <div className="bg-muted/40 rounded-lg p-3 text-center">
-                    <p className="text-xs text-muted-foreground mb-1">Original</p>
-                    <p className="text-sm font-mono font-bold">{study.originalMetric}</p>
+                    <p className="text-xs text-muted-foreground mb-1">Metric</p>
+                    <p className="text-sm font-mono font-bold">{study.metric}</p>
                   </div>
                   <div className="bg-primary/5 border border-primary/20 rounded-lg p-3 text-center">
                     <p className="text-xs text-primary mb-1">Reproduced</p>
-                    <p className="text-sm font-mono font-bold">{study.ourMetric}</p>
-                  </div>
-                  <div className="bg-muted/40 rounded-lg p-3 text-center">
-                    <div className="flex items-center justify-center gap-1 mb-1">
-                      {study.gap.startsWith("-") ? (
-                        <TrendingDown className="h-3 w-3 text-green-500" />
-                      ) : (
-                        <TrendingUp className="h-3 w-3 text-orange-500" />
-                      )}
-                      <p className="text-xs text-muted-foreground">Gap</p>
-                    </div>
-                    <p className="text-sm font-mono font-bold">{study.gap}</p>
+                    <p className="text-sm font-mono font-bold">{study.result}</p>
                   </div>
                 </div>
+                <p className="text-xs text-muted-foreground mb-5 italic">
+                  {study.note}
+                </p>
 
                 {/* Insights */}
                 <div>
