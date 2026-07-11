@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, BookOpen, FlaskConical, GitMerge } from "lucide-react";
+import { ArrowRight, BookOpen, GitMerge } from "lucide-react";
 import { SectionHeader } from "./section-header";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -15,15 +15,6 @@ const researchAreas = [
       "Multimodal deep learning for voice pathology detection — fusing audio spectrograms with glottal area waveforms via cross-modal attention. Achieved 0.86 patient accuracy on AVPD benchmark.",
     tags: ["Multimodal", "TCN", "Healthcare AI"],
     href: "/research#thesis",
-  },
-  {
-    icon: FlaskConical,
-    title: "Publications",
-    subtitle: "In Preparation",
-    description:
-      "Extending thesis findings for clinical NLP venue submission. Exploring generalization of cross-modal attention to other physiological signal pairs.",
-    tags: ["Academic", "Peer Review", "2025"],
-    href: "/research#publications",
   },
   {
     icon: GitMerge,
@@ -56,7 +47,7 @@ export function ResearchPreview() {
           </Link>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 gap-6">
           {researchAreas.map((area, i) => {
             const Icon = area.icon;
             return (

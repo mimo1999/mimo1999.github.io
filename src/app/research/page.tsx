@@ -67,23 +67,6 @@ export default function ResearchPage() {
 
       <Separator className="mb-16" />
 
-      {/* Publications */}
-      <section id="publications" className="mb-16">
-        <h2 className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-6">
-          Publications
-        </h2>
-        {publications.filter((p) => p.type !== "thesis").length === 0 ? (
-          <div className="rounded-xl border border-dashed border-border/60 p-10 text-center">
-            <FileText className="h-8 w-8 text-muted-foreground/30 mx-auto mb-3" />
-            <p className="text-sm text-muted-foreground">
-              Papers in preparation — extending thesis work for conference submission.
-            </p>
-          </div>
-        ) : null}
-      </section>
-
-      <Separator className="mb-16" />
-
       {/* Reproduction Studies */}
       <section id="reproductions">
         <h2 className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">
