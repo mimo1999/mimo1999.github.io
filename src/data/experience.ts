@@ -24,9 +24,11 @@ export const experience: Experience[] = [
     problem:
       "Medical simulation and synthesis pipelines ran on fragmented sequential CI stages with long HPC queue times, high manual intervention rates, and no containerized execution strategy — causing slow iteration and wasted compute.",
     actions: [
-      "Re-architected Azure DevOps pipelines for hardware build, simulation, and synthesis into parallel, agent-agnostic multi-core stages",
-      "Drove department-wide adoption of Slurm-based HPC scheduling by benchmarking resource utilization and validating containerized (Podman) workloads",
-      "Expanded regression coverage by integrating automated Pytest-based core validation into the CI/CD release pipeline",
+      "Designed an MCP-based integration concept for orchestrating Questa OneSpin RTL validation through FuseSoC workflows",
+      "Redesigned Azure DevOps CI/CD pipelines into a parallel execution framework that dispatched independent build flows from a single repository checkout",
+      "Performed resource and compute utilization analysis of containerized (Podman) FPGA simulation workloads, validating Slurm-based offloading as a scalable alternative to the existing CI execution model",
+      "Architected a hybrid Azure DevOps–Slurm workflow that offloaded FuseSoC jobs to dynamically allocated HPC nodes",
+      "Improved the reliability of FuseSoC-based FPGA development by implementing Pytest regression tests, resolving test-case bugs, and validating new package management features",
     ],
     results: [
       "~20% reduction in CI runtime",
