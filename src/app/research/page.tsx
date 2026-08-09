@@ -13,7 +13,7 @@ export default function ResearchPage() {
       <SectionHeader
         eyebrow="Research"
         title="Academic Work"
-        description="Thesis research, paper reproductions, and ongoing investigation in healthcare AI."
+        description="Thesis research on multimodal clinical AI, interpretable ML for risk prediction, and independent reproductions of published results."
       />
 
       {/* Thesis */}
@@ -67,13 +67,57 @@ export default function ResearchPage() {
 
       <Separator className="mb-16" />
 
+      {/* Research Projects */}
+      <section id="projects" className="mb-16">
+        <h2 className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-6">
+          Research Projects
+        </h2>
+        <div className="space-y-6">
+          {publications
+            .filter((p) => p.type !== "thesis")
+            .map((pub, i) => (
+              <motion.div
+                key={pub.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="rounded-xl border border-border/60 bg-card p-6"
+              >
+                <div className="flex items-start gap-3 mb-4">
+                  <div className="p-2 rounded-md bg-muted shrink-0">
+                    <FileText className="h-4 w-4 text-muted-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold leading-tight mb-1">
+                      {pub.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {pub.authors} · {pub.venue} · {pub.year}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  {pub.abstract}
+                </p>
+                <div className="flex gap-2">
+                  <Badge variant="outline">{pub.type}</Badge>
+                  <Badge variant="secondary">{pub.status}</Badge>
+                </div>
+              </motion.div>
+            ))}
+        </div>
+      </section>
+
+      <Separator className="mb-16" />
+
       {/* Reproduction Studies */}
       <section id="reproductions">
         <h2 className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">
           Reproduction Studies
         </h2>
         <p className="text-sm text-muted-foreground mb-8">
-          Independent reproductions of CVPR/MICCAI 2024 papers — reconstructing pipelines, validating metrics, and documenting gotchas.
+          Independent reproductions of 8 CVPR/MICCAI 2024 papers across six research areas, each rebuilt end-to-end on a single free-tier T4 — reconstructing pipelines, validating metrics, and reporting what didn&apos;t match.
         </p>
         <div className="space-y-6">
           {reproductionStudies.map((study, i) => (

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, BookOpen, GitMerge } from "lucide-react";
+import { ArrowRight, BookOpen, FlaskConical, GitMerge } from "lucide-react";
 import { SectionHeader } from "./section-header";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -10,18 +10,27 @@ const researchAreas = [
   {
     icon: BookOpen,
     title: "Masters Thesis",
-    subtitle: "Clinical Voice Diagnostics",
+    subtitle: "AdLD Biomarker Detection",
     description:
-      "Multimodal deep learning for voice pathology detection — fusing audio spectrograms with glottal area waveforms via cross-modal attention. Achieved 0.86 patient accuracy on AVPD benchmark.",
+      "Multimodal time-resolved detection of laryngeal dystonia biomarkers — a context-window TCN fusing audio with glottal area waveform via bidirectional cross-modal attention. 0.86 patient-level accuracy; manuscript submitted to the Journal of Voice.",
     tags: ["Multimodal", "TCN", "Healthcare AI"],
     href: "/research#thesis",
   },
   {
+    icon: FlaskConical,
+    title: "Research Projects",
+    subtitle: "Interpretable ML for Clinical Risk",
+    description:
+      "Benchmarked 10 model families on MIMIC-IV chemotherapy cohorts to test whether glass-box GAMs can match black-box ensembles — an EBM reached AUROC 0.8262 against CatBoost's 0.8180 on identical features.",
+    tags: ["Interpretability", "MIMIC-IV", "Benchmarking"],
+    href: "/research#projects",
+  },
+  {
     icon: GitMerge,
     title: "Reproduction Studies",
-    subtitle: "CVPR 2024 Papers Reproduced",
+    subtitle: "8 CVPR/MICCAI 2024 Papers",
     description:
-      "Independent reproductions of CVPR 2024 papers — diffusion-based super-resolution, snapshot compressive imaging, and floorplan localization. Documented pipelines, results, and reproducibility gotchas.",
+      "Independent reproductions across six research areas on a single free-tier GPU — reporting what didn't match, including a suspected test-set contamination caught by flagging an implausibly good result.",
     tags: ["Reproducibility", "Computer Vision", "CVPR 2024"],
     href: "/research#reproductions",
   },
@@ -35,7 +44,7 @@ export function ResearchPreview() {
           <SectionHeader
             eyebrow="Research"
             title="Academic Work"
-            description="Thesis research, paper reproductions, and ongoing investigations in healthcare AI."
+            description="Thesis research, interpretable ML for clinical risk, and independent paper reproductions."
             className="mb-0"
           />
           <Link
@@ -47,7 +56,7 @@ export function ResearchPreview() {
           </Link>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {researchAreas.map((area, i) => {
             const Icon = area.icon;
             return (
