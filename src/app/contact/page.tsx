@@ -24,7 +24,7 @@ const contactInfo = [
     icon: FaLinkedin,
     label: "LinkedIn",
     value: "linkedin.com/in/maitreya-mohapatra",
-    href: "https://linkedin.com/in/maitreya-mohapatra",
+    href: "https://www.linkedin.com/in/maitreya-mohapatra-2a1886148/",
   },
   {
     icon: MapPin,

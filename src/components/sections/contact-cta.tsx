@@ -61,7 +61,7 @@ export function ContactCTA() {
               GitHub
             </a>
             <a
-              href="https://linkedin.com/in/maitreya-mohapatra"
+              href="https://www.linkedin.com/in/maitreya-mohapatra-2a1886148/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
