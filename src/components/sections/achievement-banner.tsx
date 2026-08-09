@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Award, Briefcase, Trophy } from "lucide-react";
 
 const achievements = [
-  { icon: Award, value: "2", label: "US Patents Filed" },
-  { icon: Briefcase, value: "4+", label: "Years Experience" },
+  { icon: Award, value: "2", label: "US Patents (1 granted)" },
+  { icon: Briefcase, value: "3+", label: "Years Experience" },
   { icon: Trophy, value: "2", label: "Hackathon Awards" },
 ];
 

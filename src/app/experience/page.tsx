@@ -131,7 +131,7 @@ export default function ExperiencePage() {
         </h2>
         <div className="space-y-4">
           {experience.map((exp, i) => (
-            <ExperienceCard key={exp.company} exp={exp} index={i} />
+            <ExperienceCard key={`${exp.company}-${exp.period}`} exp={exp} index={i} />
           ))}
         </div>
       </section>

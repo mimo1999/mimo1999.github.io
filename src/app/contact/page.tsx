@@ -29,7 +29,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Location",
-    value: "Nuremberg, Germany · Available Aug 2026",
+    value: "Nuremberg, Germany · Available full-time from 24 Aug 2026",
     href: null,
   },
 ];

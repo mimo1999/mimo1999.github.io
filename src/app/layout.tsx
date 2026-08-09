@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Maitreya Mohapatra — AI Engineer",
   description:
-    "Building production-ready AI systems, multimodal healthcare solutions, and scalable MLOps infrastructure. 5+ years, 8 enterprise deployments, 2 patents.",
+    "Building production-ready AI systems, multimodal healthcare solutions, and scalable MLOps infrastructure. 3+ years, 8 enterprise deployments, 2 US patents.",
   keywords: [
     "AI Engineer",
     "MLOps",

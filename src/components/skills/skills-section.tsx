@@ -5,7 +5,7 @@ import {
   Brain,
   Bot,
   Server,
-  Cloud,
+  Gauge,
   Code,
   Database,
 } from "lucide-react";
@@ -17,7 +17,7 @@ const iconMap: Record<string, React.ElementType> = {
   Brain,
   Bot,
   Server,
-  Cloud,
+  Gauge,
   Code,
   Database,
 };

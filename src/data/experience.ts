@@ -15,7 +15,11 @@ export interface Experience {
 export const experience: Experience[] = [
   {
     company: "Siemens Healthineers",
-    role: "Working Student, R&D DI",
+    // English-language site: "Working Student", not "Werkstudent", so non-German
+    // readers can parse it — per career_kit/persona/identity.md. The role-type
+    // label matters; "Part-time" would describe only the hours and invite a
+    // reader to discount the 17 months the "3+ years" claim partly rests on.
+    role: "AI Infra Engineer (Working Student)",
     period: "Apr 2025 – present",
     location: "Erlangen, Germany",
     type: "part-time",
@@ -72,12 +76,12 @@ export const experience: Experience[] = [
     location: "Bhubaneswar, India",
     type: "full-time",
     description:
-      "Built and deployed production cash-flow forecasting ML systems for Fortune 500 enterprise clients, led feature engineering research that resulted in two US patent applications, and optimized AWS infrastructure costs.",
+      "Built and deployed production cash-flow forecasting ML systems for Fortune 500 enterprise clients, led feature engineering research that resulted in two US patents (one granted), and optimized AWS infrastructure costs.",
     problem:
       "Enterprise clients needed accurate cash-flow forecasts integrated with heterogeneous ERP systems (SAP, Oracle, NetSuite). Existing approaches lacked generalization across client datasets and had high AWS infrastructure costs.",
     actions: [
       "Shipped cash-flow forecasting models (clustering + regression) to production for 8 enterprise accounts including Fortune 500 clients",
-      "Designed a customer-behavior feature engineering framework that generalized across heterogeneous client datasets — core ideas filed in 2 US patent applications",
+      "Designed a customer-behavior feature engineering framework that generalized across heterogeneous client datasets — core ideas behind 2 US patents (one granted)",
       "Built SQL/Snowflake ingestion pipelines that standardized multi-ERP data (SAP, Oracle, NetSuite) into a unified modeling schema",
       "Re-engineered ML pipelines with multiprocessing and compute-efficient design, lowering annual AWS infrastructure costs",
       "Translated client cash-flow pain points into ML problem statements through discovery sessions as embedded data-science consultant",
@@ -128,7 +132,8 @@ export const education = [
     period: "Oct 2023 – Aug 2026",
     location: "Erlangen, Germany",
     gpa: "1.6 (German scale, 1.0 = best)",
-    thesis: "Multimodal AI for Clinical Voice Diagnostics",
+    thesis:
+      "Multimodal Time-Resolved Detection of Adductor Laryngeal Dystonia Biomarkers",
     courses: [
       "Deep Learning",
       "Natural Language Processing",
@@ -157,14 +162,14 @@ export const awards = [
   {
     title: "3rd Prize — Healthcare Hackathon",
     organization: "Siemens Healthineers × Medical Valley",
-    year: "2025",
+    year: "2024",
     description:
       "Built Flora, a patient-facing conversational avatar with RAG over an embedded vector database of medical information, supporting medication reminders, appointment tracking, and PDF report summarization.",
   },
   {
     title: "2nd Prize — Graphathon",
     organization: "Siemens Healthineers × Neo4j",
-    year: "2025",
+    year: "2026",
     description:
       "Built a job-market intelligence pipeline using LLM-based extraction of skills and technologies from live postings into Neo4j and Databricks, surfaced via a Streamlit dashboard.",
   },
@@ -172,17 +177,25 @@ export const awards = [
 
 export const patents = [
   {
+    title: "ML systems for cash-flow forecasting",
+    subtitle: "for professional employer organizations",
+    number: "US-12657596-B2",
+    year: "2025",
+    status: "granted" as const,
+    // career_kit lists https://patents.google.com/patent/US12657596B2/en, but that
+    // page 404s — likely not yet indexed. Left unlinked so the number still shows
+    // without shipping a dead link; add `url` once Google Patents picks it up.
+    url: undefined as string | undefined,
+    description:
+      "End-to-end ML system for enterprise cash-flow forecasting with adaptive model selection and drift-aware retraining pipeline.",
+  },
+  {
     title: "ML-based prediction of financial transaction patterns",
     number: "US20250217746A1",
     year: "2025",
+    status: "pending" as const,
+    url: "https://patents.google.com/patent/US20250217746A1/en",
     description:
       "Customer-behavior feature engineering framework for predicting financial transaction patterns across heterogeneous enterprise datasets.",
-  },
-  {
-    title: "ML systems for cash-flow forecasting",
-    number: "US20240354786A1",
-    year: "2024",
-    description:
-      "End-to-end ML system for enterprise cash-flow forecasting with adaptive model selection and drift-aware retraining pipeline.",
   },
 ];

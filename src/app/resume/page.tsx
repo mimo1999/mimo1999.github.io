@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { experience, education, awards, patents } from "@/data/experience";
-import { skillGroups } from "@/data/skills";
+import { skillGroups, spokenLanguages } from "@/data/skills";
 
 export default function ResumePage() {
   return (
@@ -62,12 +62,10 @@ export default function ResumePage() {
             Summary
           </h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            AI Engineer with 3+ years building production ML and LLM-based systems across
-            fintech, healthcare, and industrial R&D. Hands-on with agentic architectures
-            (LangGraph, MCP), retrieval-augmented generation, and deploying ML services behind
-            CI/CD. Co-inventor on two US patent applications for ML-based financial forecasting.
-            Completing M.Sc. in Artificial Intelligence at FAU Erlangen-Nürnberg (graduating
-            August 2026).
+            AI Engineer (3+ yrs) building production agentic/RAG systems and CI/CD-deployed
+            ML services across fintech, healthcare, and industrial R&D. Co-inventor on 2 US
+            patents. Completing M.Sc. in Artificial Intelligence at FAU Erlangen-Nürnberg
+            (graduating August 2026).
           </p>
         </section>
 
@@ -80,7 +78,7 @@ export default function ResumePage() {
           </h2>
           <div className="space-y-6">
             {experience.map((exp) => (
-              <div key={exp.company}>
+              <div key={`${exp.company}-${exp.period}`}>
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 mb-2">
                   <div>
                     <h3 className="font-semibold text-sm">{exp.role}</h3>
@@ -147,7 +145,7 @@ export default function ResumePage() {
           <div className="space-y-3">
             {skillGroups.map((group) => (
               <div key={group.category} className="flex gap-3">
-                <p className="text-xs font-medium w-36 shrink-0 text-muted-foreground pt-0.5">
+                <p className="text-xs font-medium w-44 shrink-0 text-muted-foreground pt-0.5">
                   {group.category}
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -164,6 +162,23 @@ export default function ResumePage() {
 
         <Separator />
 
+        {/* Languages */}
+        <section>
+          <h2 className="text-xs font-mono text-primary uppercase tracking-widest mb-4">
+            Languages
+          </h2>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {spokenLanguages.map((lang) => (
+              <p key={lang.language} className="text-xs text-muted-foreground">
+                <span className="font-medium text-foreground">{lang.language}</span>{" "}
+                — {lang.level}
+              </p>
+            ))}
+          </div>
+        </section>
+
+        <Separator />
+
         {/* Patents & Awards */}
         <div className="grid sm:grid-cols-2 gap-8">
           <section>
@@ -172,10 +187,22 @@ export default function ResumePage() {
             </h2>
             <div className="space-y-3">
               {patents.map((patent) => (
-                <div key={patent.title}>
+                <div key={patent.number}>
                   <p className="text-xs font-medium">{patent.title}</p>
                   <p className="text-xs text-muted-foreground">
-                    {patent.year} · {patent.number}
+                    {patent.url ? (
+                      <a
+                        href={patent.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-primary transition-colors underline underline-offset-2"
+                      >
+                        {patent.number}
+                      </a>
+                    ) : (
+                      patent.number
+                    )}{" "}
+                    · {patent.status}
                   </p>
                 </div>
               ))}
