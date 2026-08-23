@@ -334,6 +334,7 @@ export const projects: Project[] = [
     category: "genai",
     status: "open-source",
     github: "https://github.com/mimo1999/Flowify_toolkit",
+    demo: "https://flowify-7vcn.onrender.com/",
   },
   {
     title: "Hidden Shape Reconstruction",
