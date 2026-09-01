@@ -284,6 +284,7 @@ export const projects: Project[] = [
     category: "genai",
     status: "open-source",
     github: "https://github.com/mimo1999/research-swarm",
+    demo: "https://huggingface.co/spaces/maitreya18/research-swarm",
   },
   {
     title: "Flowify",
