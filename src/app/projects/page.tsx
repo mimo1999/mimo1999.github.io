@@ -3,7 +3,7 @@ import { projects } from "@/data/projects";
 import { SectionHeader } from "@/components/sections/section-header";
 
 export const metadata = {
-  title: "Projects — Maitreya Mohapatra",
+  title: "Projects - Maitreya Mohapatra",
   description:
     "Production ML systems, healthcare AI, and enterprise deployments.",
 };
@@ -23,7 +23,7 @@ export default function ProjectsPage() {
       <SectionHeader
         eyebrow="Portfolio"
         title="All Projects"
-        description="From research prototypes to Fortune 500 enterprise deployments — systems that ship."
+        description="From research prototypes to Fortune 500 enterprise deployments - systems that ship."
       />
 
       {categories.map((cat) => {

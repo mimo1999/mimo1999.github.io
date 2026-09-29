@@ -117,7 +117,7 @@ export default function ResearchPage() {
           Reproduction Studies
         </h2>
         <p className="text-sm text-muted-foreground mb-8">
-          Independent reproductions of 8 CVPR/MICCAI 2024 papers across six research areas, each rebuilt end-to-end on a single free-tier T4 — reconstructing pipelines, validating metrics, and reporting what didn&apos;t match.
+          Independent reproductions of 8 CVPR/MICCAI 2024 papers across six research areas, each rebuilt end-to-end on a single free-tier T4 - reconstructing pipelines, validating metrics, and reporting what didn&apos;t match.
         </p>
         <div className="space-y-6">
           {reproductionStudies.map((study, i) => (

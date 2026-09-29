@@ -19,7 +19,7 @@ function ExperienceCard({ exp, index }: { exp: typeof experience[0]; index: numb
       transition={{ duration: 0.4, delay: index * 0.1 }}
       className="rounded-xl border border-border/60 bg-card overflow-hidden"
     >
-      {/* Header — always visible */}
+      {/* Header - always visible */}
       <button
         onClick={() => setExpanded(!expanded)}
         className="w-full text-left p-6 hover:bg-muted/20 transition-colors"

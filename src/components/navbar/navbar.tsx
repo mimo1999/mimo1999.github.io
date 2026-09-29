@@ -26,17 +26,21 @@ export function Navbar() {
 
   useEffect(() => {
     setMounted(true);
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const sentinel = document.getElementById("scroll-sentinel");
+    if (!sentinel) return;
+    const io = new IntersectionObserver(([e]) => setScrolled(!e.isIntersecting));
+    io.observe(sentinel);
+    return () => io.disconnect();
   }, []);
 
   return (
+    <>
+    <div id="scroll-sentinel" aria-hidden className="absolute top-0 h-5 w-px" />
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border/50 shadow-sm"
+          ? "bg-background/80 backdrop-blur-md border-b border-border/50 "
           : "bg-transparent"
       )}
     >
@@ -59,6 +63,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={pathname === link.href ? "page" : undefined}
                 className={cn(
                   "px-3 py-1.5 text-sm rounded-md transition-colors font-medium",
                   pathname === link.href
@@ -111,6 +116,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={pathname === link.href ? "page" : undefined}
                 onClick={() => setIsOpen(false)}
                 className={cn(
                   "block px-3 py-2 text-sm rounded-md transition-colors font-medium",
@@ -126,5 +132,6 @@ export function Navbar() {
         )}
       </nav>
     </header>
+    </>
   );
 }

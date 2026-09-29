@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = getProjectBySlug(slug);
   if (!project) return { title: "Project Not Found" };
   return {
-    title: `${project.title} — Maitreya Mohapatra`,
+    title: `${project.title} - Maitreya Mohapatra`,
     description: project.description,
   };
 }

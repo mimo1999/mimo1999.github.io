@@ -17,7 +17,7 @@ const socialLinks = [
     icon: FaGithub,
   },
   {
-    href: "https://www.linkedin.com/in/maitreya-mohapatra-2a1886148/",
+    href: "https://www.linkedin.com/in/maitreya-mohapatra",
     label: "LinkedIn",
     icon: FaLinkedin,
   },

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[calc(100dvh-4rem)] flex items-center overflow-hidden">
       {/* Background grid */}
       <div
         className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
@@ -17,8 +17,6 @@ export function Hero() {
           backgroundSize: "50px 50px",
         }}
       />
-      {/* Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="max-w-3xl">
@@ -27,10 +25,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-mono mb-8"
+            className="inline-flex items-center px-2.5 py-1 rounded-md border border-border text-muted-foreground text-xs font-mono mb-8"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-            Open to new opportunities
+            Available full-time from Oct 2026
           </motion.div>
 
           {/* Headline */}
@@ -38,10 +35,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] mb-6 text-balance"
           >
-            Building AI Systems That Move From{" "}
-            <span className="text-primary">Research to Production</span>
+            Building AI systems that move from{" "}
+            <span className="text-primary">research to production</span>
           </motion.h1>
 
           {/* Role tags */}
@@ -106,7 +103,7 @@ export function Hero() {
               )}
             >
               <Mail className="h-4 w-4" />
-              Contact Me
+              Contact
             </Link>
           </motion.div>
         </div>

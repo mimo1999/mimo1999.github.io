@@ -65,7 +65,7 @@ export default function ResumePage() {
             AI Engineer (3+ yrs) building production agentic/RAG systems and CI/CD-deployed
             ML services across fintech, healthcare, and industrial R&D. Co-inventor on 2 US
             patents. Completing M.Sc. in Artificial Intelligence at FAU Erlangen-Nürnberg
-            (graduating August 2026).
+            (graduating September 2026).
           </p>
         </section>
 
@@ -171,7 +171,7 @@ export default function ResumePage() {
             {spokenLanguages.map((lang) => (
               <p key={lang.language} className="text-xs text-muted-foreground">
                 <span className="font-medium text-foreground">{lang.language}</span>{" "}
-                — {lang.level}
+                - {lang.level}
               </p>
             ))}
           </div>

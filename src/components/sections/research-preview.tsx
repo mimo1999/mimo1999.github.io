@@ -12,7 +12,7 @@ const researchAreas = [
     title: "Masters Thesis",
     subtitle: "AdLD Biomarker Detection",
     description:
-      "Multimodal time-resolved detection of laryngeal dystonia biomarkers — a context-window TCN fusing audio with glottal area waveform via bidirectional cross-modal attention. 0.86 patient-level accuracy; manuscript submitted to the Journal of Voice.",
+      "Multimodal time-resolved detection of laryngeal dystonia biomarkers - a context-window TCN fusing audio with glottal area waveform via bidirectional cross-modal attention. 0.86 patient-level accuracy; manuscript submitted to the Journal of Voice.",
     tags: ["Multimodal", "TCN", "Healthcare AI"],
     href: "/research#thesis",
   },
@@ -21,7 +21,7 @@ const researchAreas = [
     title: "Research Projects",
     subtitle: "Interpretable ML for Clinical Risk",
     description:
-      "Benchmarked 10 model families on MIMIC-IV chemotherapy cohorts to test whether glass-box GAMs can match black-box ensembles — an EBM reached AUROC 0.8262 against CatBoost's 0.8180 on identical features.",
+      "Benchmarked 10 model families on MIMIC-IV chemotherapy cohorts to test whether glass-box GAMs can match black-box ensembles - an EBM reached AUROC 0.8262 against CatBoost's 0.8180 on identical features.",
     tags: ["Interpretability", "MIMIC-IV", "Benchmarking"],
     href: "/research#projects",
   },
@@ -30,7 +30,7 @@ const researchAreas = [
     title: "Reproduction Studies",
     subtitle: "8 CVPR/MICCAI 2024 Papers",
     description:
-      "Independent reproductions across six research areas on a single free-tier GPU — reporting what didn't match, including a suspected test-set contamination caught by flagging an implausibly good result.",
+      "Independent reproductions across six research areas on a single free-tier GPU - reporting what didn't match, including a suspected test-set contamination caught by flagging an implausibly good result.",
     tags: ["Reproducibility", "Computer Vision", "CVPR 2024"],
     href: "/research#reproductions",
   },

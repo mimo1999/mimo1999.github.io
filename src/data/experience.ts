@@ -16,27 +16,27 @@ export const experience: Experience[] = [
   {
     company: "Siemens Healthineers",
     // English-language site: "Working Student", not "Werkstudent", so non-German
-    // readers can parse it — per career_kit/persona/identity.md. The role-type
+    // readers can parse it - per career_kit/persona/identity.md. The role-type
     // label matters; "Part-time" would describe only the hours and invite a
     // reader to discount the 17 months the "3+ years" claim partly rests on.
     role: "AI Infra Engineer (Working Student)",
-    period: "Apr 2025 – present",
+    period: "Apr 2025 - present",
     location: "Erlangen, Germany",
     type: "part-time",
     description:
       "Re-architecting CI/CD and HPC infrastructure for medical hardware simulation and synthesis pipelines, improving developer velocity and compute efficiency across the R&D DI department.",
     problem:
-      "Medical simulation and synthesis pipelines ran on fragmented sequential CI stages with long HPC queue times, high manual intervention rates, and no containerized execution strategy — causing slow iteration and wasted compute.",
+      "Medical simulation and synthesis pipelines ran on fragmented sequential CI stages with long HPC queue times, high manual intervention rates, and no containerized execution strategy - causing slow iteration and wasted compute.",
     actions: [
-      "Designed an MCP-based integration concept for orchestrating Questa OneSpin RTL validation through FuseSoC workflows",
+      "Designed and implemented codebase-wide RAG ingestion across 30+ FPGA repositories, converting repository dependencies and code structure into knowledge graphs, and exposed the retrieval layer through MCP to a Copilot agent for skill-based RTL orchestration and Questa OneSpin validation workflows",
       "Redesigned Azure DevOps CI/CD pipelines into a parallel execution framework that dispatched independent build flows from a single repository checkout",
       "Performed resource and compute utilization analysis of containerized (Podman) FPGA simulation workloads, validating Slurm-based offloading as a scalable alternative to the existing CI execution model",
-      "Architected a hybrid Azure DevOps–Slurm workflow that offloaded FuseSoC jobs to dynamically allocated HPC nodes",
+      "Architected a hybrid Azure DevOps-Slurm workflow that offloaded FuseSoC jobs to dynamically allocated HPC nodes",
       "Improved the reliability of FuseSoC-based FPGA development by implementing Pytest regression tests, resolving test-case bugs, and validating new package management features",
     ],
     results: [
       "~20% reduction in CI runtime",
-      "~60% fewer manual interventions",
+      "~60% less manual effort",
       "~50% improvement in compute utilization",
       "~35% reduction in job turnaround",
     ],
@@ -52,7 +52,7 @@ export const experience: Experience[] = [
   {
     company: "FAU Erlangen-Nürnberg",
     role: "Teaching Assistant, Deep Learning",
-    period: "Nov 2024 – Mar 2025",
+    period: "Nov 2024 - Mar 2025",
     location: "Erlangen, Germany",
     type: "teaching",
     description:
@@ -72,7 +72,7 @@ export const experience: Experience[] = [
   {
     company: "HighRadius",
     role: "Associate Software Engineer, Data Science",
-    period: "Jun 2021 – Aug 2023",
+    period: "Jun 2021 - Aug 2023",
     location: "Bhubaneswar, India",
     type: "full-time",
     description:
@@ -80,8 +80,9 @@ export const experience: Experience[] = [
     problem:
       "Enterprise clients needed accurate cash-flow forecasts integrated with heterogeneous ERP systems (SAP, Oracle, NetSuite). Existing approaches lacked generalization across client datasets and had high AWS infrastructure costs.",
     actions: [
-      "Shipped cash-flow forecasting models (clustering + regression) to production for 8 enterprise accounts including Fortune 500 clients",
-      "Designed a customer-behavior feature engineering framework that generalized across heterogeneous client datasets — core ideas behind 2 US patents (one granted)",
+      "Led ML treasury-forecasting delivery for 8 Fortune 500 enterprise accounts as primary technical contact, and mentored 10+ interns",
+      "Productized 50+ forecasting models processing up to 6 million line items into HighRadius's AI-powered Treasury product (recognized as an IDC MarketScape Major Player)",
+      "Built two patented models: payroll cash-flow forecasting (95%+ accuracy) and a customer-behavior feature framework that lifted accuracy 20-30% across production accounts",
       "Built SQL/Snowflake ingestion pipelines that standardized multi-ERP data (SAP, Oracle, NetSuite) into a unified modeling schema",
       "Re-engineered ML pipelines with multiprocessing and compute-efficient design, lowering annual AWS infrastructure costs",
       "Translated client cash-flow pain points into ML problem statements through discovery sessions as embedded data-science consultant",
@@ -91,8 +92,8 @@ export const experience: Experience[] = [
       "95%+ one-year cumulative accuracy",
       "8 enterprise accounts deployed",
       "~20% AWS cost reduction",
-      "10–15% faster client onboarding",
-      "20–30% model accuracy improvement",
+      "10-15% faster client onboarding",
+      "20-30% model accuracy improvement",
     ],
     technologies: [
       "Python",
@@ -106,22 +107,39 @@ export const experience: Experience[] = [
   {
     company: "HighRadius",
     role: "Data Science Intern",
-    period: "Jun 2020 – Jun 2021",
+    period: "Jun 2020 - Jun 2021",
     location: "Bhubaneswar, India",
     type: "internship",
     description:
-      "Improved ML pipeline efficiency and automated legacy workflows for cash-flow forecasting products.",
+      "Cut client-side forecast validation time and manual forecast-loading effort for cash-flow forecasting products.",
     problem:
-      "Feature selection was slow due to exhaustive grid search, and forecast loading required significant manual effort through a legacy UI.",
+      "Clients spent significant time validating forecasts by hand, and forecast loading required manual effort through a legacy UI.",
     actions: [
-      "Replaced exhaustive grid search with an auxiliary feature-importance pre-filter, reducing feature-selection runtime",
-      "Automated a legacy UI workflow for forecast loading with credential-parameterized cloud scripts",
+      "Built an Openpyxl report that cut client-side forecast validation time by 50%",
+      "Automated the legacy forecast-loading workflow with credential-parameterized cloud scripts, cutting manual effort by 70%",
     ],
     results: [
-      "40% faster feature selection",
+      "50% faster client-side forecast validation",
       "70% less manual effort in forecast loading",
     ],
-    technologies: ["Python", "SQL", "AWS"],
+    technologies: ["Python", "SQL", "AWS", "Openpyxl"],
+  },
+  {
+    company: "HighRadius",
+    role: "Full Stack Intern",
+    period: "Apr 2020 - Jun 2020",
+    location: "Bhubaneswar, India",
+    type: "internship",
+    description:
+      "Built an AI-enabled accounts-receivable dashboard with a payment-date prediction model.",
+    problem:
+      "Accounts-receivable teams needed a single view of open invoices with a prediction of when each would be paid.",
+    actions: [
+      "Built an AI-enabled accounts-receivable dashboard (React, Java/SQL, Dialogflow)",
+      "Trained an XGBoost model to predict invoice payment dates",
+    ],
+    results: ["Dashboard with payment-date prediction"],
+    technologies: ["React", "Java", "SQL", "Dialogflow", "XGBoost"],
   },
 ];
 
@@ -129,7 +147,7 @@ export const education = [
   {
     institution: "Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)",
     degree: "Master of Science in Artificial Intelligence",
-    period: "Oct 2023 – Aug 2026",
+    period: "Oct 2023 - Sep 2026",
     location: "Erlangen, Germany",
     gpa: "1.6 (German scale, 1.0 = best)",
     thesis:
@@ -145,9 +163,9 @@ export const education = [
   {
     institution: "Kalinga Institute of Industrial Technology (KIIT)",
     degree: "Bachelor of Technology in Computer Science and Engineering",
-    period: "Jun 2017 – Jun 2021",
+    period: "Jun 2017 - Jun 2021",
     location: "Bhubaneswar, India",
-    gpa: "1.5 (German scale equivalent, 1.0 = best)",
+    gpa: "1.4 (German scale equivalent, 1.0 = best)",
     courses: [
       "Data Structures",
       "Operating Systems",
@@ -160,14 +178,14 @@ export const education = [
 
 export const awards = [
   {
-    title: "3rd Prize — Healthcare Hackathon",
+    title: "3rd Prize - Healthcare Hackathon",
     organization: "Siemens Healthineers × Medical Valley",
     year: "2024",
     description:
       "Built Flora, a patient-facing conversational avatar with RAG over an embedded vector database of medical information, supporting medication reminders, appointment tracking, and PDF report summarization.",
   },
   {
-    title: "2nd Prize — Graphathon",
+    title: "2nd Prize - Graphathon",
     organization: "Siemens Healthineers × Neo4j",
     year: "2026",
     description:
@@ -183,7 +201,7 @@ export const patents = [
     year: "2025",
     status: "granted" as const,
     // career_kit lists https://patents.google.com/patent/US12657596B2/en, but that
-    // page 404s — likely not yet indexed. Left unlinked so the number still shows
+    // page 404s - likely not yet indexed. Left unlinked so the number still shows
     // without shipping a dead link; add `url` once Google Patents picks it up.
     url: undefined as string | undefined,
     description:

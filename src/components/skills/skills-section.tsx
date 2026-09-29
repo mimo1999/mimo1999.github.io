@@ -29,7 +29,7 @@ export function SkillsSection() {
         <SectionHeader
           eyebrow="Technical Expertise"
           title="Skills & Capabilities"
-          description="Grouped by capability area — not skill bars."
+          description="Grouped by what each tool is used for."
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

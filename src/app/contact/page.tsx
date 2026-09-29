@@ -24,12 +24,12 @@ const contactInfo = [
     icon: FaLinkedin,
     label: "LinkedIn",
     value: "linkedin.com/in/maitreya-mohapatra",
-    href: "https://www.linkedin.com/in/maitreya-mohapatra-2a1886148/",
+    href: "https://www.linkedin.com/in/maitreya-mohapatra",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "Nuremberg, Germany · Available full-time from 24 Aug 2026",
+    value: "Nuremberg, Germany · Available full-time from Oct 2026",
     href: null,
   },
 ];
@@ -59,12 +59,12 @@ export default function ContactPage() {
       />
 
       <div className="grid lg:grid-cols-2 gap-12">
-        {/* Left — info */}
+        {/* Left - info */}
         <div className="space-y-8">
           <div>
             <p className="text-muted-foreground leading-relaxed">
               I&apos;m actively looking for AI Engineer and MLOps roles where I can work on
-              meaningful problems — healthcare AI, enterprise ML systems, and production
+              meaningful problems - healthcare AI, enterprise ML systems, and production
               infrastructure are my sweet spots.
             </p>
             <p className="text-muted-foreground leading-relaxed mt-4">
@@ -112,13 +112,13 @@ export default function ContactPage() {
               Response Time
             </p>
             <p className="text-sm text-muted-foreground">
-              I typically respond within 24–48 hours. For urgent inquiries,
+              I typically respond within 24-48 hours. For urgent inquiries,
               LinkedIn messages tend to be fastest.
             </p>
           </div>
         </div>
 
-        {/* Right — form */}
+        {/* Right - form */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

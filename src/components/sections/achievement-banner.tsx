@@ -1,12 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Briefcase, Trophy } from "lucide-react";
 
 const achievements = [
-  { icon: Award, value: "2", label: "US Patents (1 granted)" },
-  { icon: Briefcase, value: "3+", label: "Years Experience" },
-  { icon: Trophy, value: "2", label: "Hackathon Awards" },
+  { value: "2", label: "US patents (1 granted)" },
+  { value: "3+", label: "Years experience" },
+  { value: "2", label: "Hackathon awards" },
 ];
 
 export function AchievementBanner() {
@@ -15,7 +14,6 @@ export function AchievementBanner() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-3 gap-6">
           {achievements.map((item, i) => {
-            const Icon = item.icon;
             return (
               <motion.div
                 key={item.label}
@@ -23,10 +21,9 @@ export function AchievementBanner() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="flex flex-col items-center text-center gap-1.5"
+                className="flex flex-col gap-1"
               >
-                <Icon className="h-4 w-4 text-primary mb-1" />
-                <span className="text-2xl font-bold font-mono text-foreground">
+                <span className="text-3xl font-semibold font-mono tabular-nums text-foreground">
                   {item.value}
                 </span>
                 <span className="text-xs text-muted-foreground leading-tight">
