@@ -23,7 +23,7 @@ export default function ProjectsPage() {
       <SectionHeader
         eyebrow="Portfolio"
         title="All Projects"
-        description="From research prototypes to Fortune 500 enterprise deployments - systems that ship."
+        description="Agentic and RAG systems, healthcare AI, computer vision, and data platforms."
       />
 
       {categories.map((cat) => {

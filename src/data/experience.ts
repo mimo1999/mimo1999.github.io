@@ -56,12 +56,11 @@ export const experience: Experience[] = [
     location: "Erlangen, Germany",
     type: "teaching",
     description:
-      "Coached students through implementing and debugging deep learning models in PyTorch as part of the university's deep learning course.",
+      "Mentored M.Sc. students in implementing and debugging CNN, RNN, and Transformer models in PyTorch for the university's deep learning course.",
     problem:
       "Students needed hands-on guidance implementing complex DL architectures (CNNs, RNNs, regularization, optimization) from scratch in PyTorch.",
     actions: [
-      "Coached students through implementing and debugging CNNs, RNNs, regularization techniques, and optimization strategies",
-      "Conducted office hours and code reviews to help students understand backpropagation and gradient-based optimization",
+      "Mentored M.Sc. students in implementing and debugging CNN, RNN, and Transformer models using PyTorch",
     ],
     results: [
       "Supported a full semester cohort",

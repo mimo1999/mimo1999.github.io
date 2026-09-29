@@ -63,12 +63,11 @@ export default function ContactPage() {
         <div className="space-y-8">
           <div>
             <p className="text-muted-foreground leading-relaxed">
-              I&apos;m actively looking for AI Engineer and MLOps roles where I can work on
-              meaningful problems - healthcare AI, enterprise ML systems, and production
-              infrastructure are my sweet spots.
+              I&apos;m looking for AI Engineer and MLOps roles: agentic and RAG systems,
+              healthcare AI, enterprise ML, and production ML infrastructure.
             </p>
             <p className="text-muted-foreground leading-relaxed mt-4">
-              If you&apos;re building something ambitious, let&apos;s talk.
+              Send a message or reach out on LinkedIn.
             </p>
           </div>
 
