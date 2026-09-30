@@ -10,6 +10,11 @@ export interface Experience {
   results: string[];
   technologies: string[];
   logo?: string;
+  /** Exact dates when known: start inclusive, end exclusive (ISO, first of month). Used for the duration shown on the home page. */
+  start?: string;
+  end?: string;
+  /** One-line, most indicative stack; shown on the home page. */
+  stackSummary: string;
 }
 
 export const experience: Experience[] = [
@@ -20,6 +25,8 @@ export const experience: Experience[] = [
     // label matters; "Part-time" would describe only the hours and invite a
     // reader to discount the 17 months the "3+ years" claim partly rests on.
     role: "AI Infra Engineer (Working Student)",
+    stackSummary:
+      "RAG over code knowledge graphs, MCP + Copilot agent, Azure DevOps CI/CD, Slurm/HPC, Podman",
     period: "Apr 2025 - present",
     location: "Erlangen, Germany",
     type: "part-time",
@@ -52,6 +59,8 @@ export const experience: Experience[] = [
   {
     company: "FAU Erlangen-Nürnberg",
     role: "Teaching Assistant, Deep Learning",
+    stackSummary:
+      "Mentorship, Core DL, PyTorch",
     period: "Nov 2024 - Mar 2025",
     location: "Erlangen, Germany",
     type: "teaching",
@@ -71,7 +80,11 @@ export const experience: Experience[] = [
   {
     company: "HighRadius",
     role: "Associate Software Engineer, Data Science",
+    stackSummary:
+      "Production forecasting models, Snowflake/SQL ETL over multi-ERPs, Jenkins, Docker, AWS",
     period: "Jun 2021 - Aug 2023",
+    start: "2021-06-01",
+    end: "2023-09-01", // last day 31 Aug 2023
     location: "Bhubaneswar, India",
     type: "full-time",
     description:
@@ -106,7 +119,11 @@ export const experience: Experience[] = [
   {
     company: "HighRadius",
     role: "Data Science Intern",
+    stackSummary:
+      "Python automation: Forecast Confidence reports",
     period: "Jun 2020 - Jun 2021",
+    start: "2020-06-01",
+    end: "2021-06-01",
     location: "Bhubaneswar, India",
     type: "internship",
     description:
@@ -126,6 +143,8 @@ export const experience: Experience[] = [
   {
     company: "HighRadius",
     role: "Full Stack Intern",
+    stackSummary:
+      "Polyglot microservices architecture: Java/Tomcat, React, Node.js/Express, Python/Flask, MySQL",
     period: "Apr 2020 - Jun 2020",
     location: "Bhubaneswar, India",
     type: "internship",

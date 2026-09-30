@@ -1,184 +1,96 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { SectionHeader } from "@/components/sections/section-header";
+import { PageTitle, Section } from "@/components/sections/section";
 import { publications, reproductionStudies } from "@/data/publications";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { FileText, GitMerge } from "lucide-react";
+
+export const metadata = {
+  title: "Research - Maitreya Mohapatra",
+  description:
+    "Thesis research on multimodal clinical AI, interpretable ML for risk prediction, and paper reproductions.",
+};
+
+function Publication({ pub }: { pub: (typeof publications)[number] }) {
+  return (
+    <article className="border-t border-border py-8">
+      <h3 className="font-display text-2xl font-semibold tracking-tight leading-tight">
+        {pub.title}
+      </h3>
+      <p className="mt-2 text-sm text-muted-foreground">
+        {pub.authors}. {pub.venue}, {pub.year}. {pub.status === "submitted" ? "Submitted." : "Published."}
+      </p>
+      <p className="mt-4 leading-relaxed max-w-[68ch] text-muted-foreground">
+        {pub.abstract}
+      </p>
+    </article>
+  );
+}
 
 export default function ResearchPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <SectionHeader
-        eyebrow="Research"
-        title="Academic Work"
-        description="Thesis research on multimodal clinical AI, interpretable ML for risk prediction, and independent reproductions of published results."
+    <>
+      <PageTitle
+        title="Research"
+        lead="Thesis research on multimodal clinical AI, interpretable ML for risk prediction, and independent reproductions of published results."
       />
 
-      {/* Thesis */}
-      <section id="thesis" className="mb-16">
-        <h2 className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-6">
-          Masters Thesis
-        </h2>
-        {publications
-          .filter((p) => p.type === "thesis")
-          .map((pub, i) => (
-            <motion.div
-              key={pub.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="rounded-xl border border-primary/20 bg-primary/5 p-6"
-            >
-              <div className="flex items-start gap-3 mb-4">
-                <div className="p-2 rounded-md bg-primary/10 shrink-0">
-                  <FileText className="h-4 w-4 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold leading-tight mb-1">
-                    {pub.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {pub.authors} · {pub.venue} · {pub.year}
-                  </p>
-                </div>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                {pub.abstract}
-              </p>
-              <div className="flex gap-2">
-                <Badge variant="outline">{pub.type}</Badge>
-                <Badge
-                  variant="secondary"
-                  className={
-                    pub.status === "published"
-                      ? "bg-green-500/10 text-green-600 border-green-500/20"
-                      : ""
-                  }
-                >
-                  {pub.status}
-                </Badge>
-              </div>
-            </motion.div>
-          ))}
-      </section>
-
-      <Separator className="mb-16" />
-
-      {/* Research Projects */}
-      <section id="projects" className="mb-16">
-        <h2 className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-6">
-          Research Projects
-        </h2>
-        <div className="space-y-6">
+      <Section title="Master's thesis" id="thesis">
+        <div className="border-b border-border">
           {publications
-            .filter((p) => p.type !== "thesis")
-            .map((pub, i) => (
-              <motion.div
-                key={pub.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="rounded-xl border border-border/60 bg-card p-6"
-              >
-                <div className="flex items-start gap-3 mb-4">
-                  <div className="p-2 rounded-md bg-muted shrink-0">
-                    <FileText className="h-4 w-4 text-muted-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold leading-tight mb-1">
-                      {pub.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {pub.authors} · {pub.venue} · {pub.year}
-                    </p>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  {pub.abstract}
-                </p>
-                <div className="flex gap-2">
-                  <Badge variant="outline">{pub.type}</Badge>
-                  <Badge variant="secondary">{pub.status}</Badge>
-                </div>
-              </motion.div>
+            .filter((p) => p.type === "thesis")
+            .map((pub) => (
+              <Publication key={pub.title} pub={pub} />
             ))}
         </div>
-      </section>
+      </Section>
 
-      <Separator className="mb-16" />
+      <Section title="Research projects" id="projects">
+        <div className="border-b border-border">
+          {publications
+            .filter((p) => p.type !== "thesis")
+            .map((pub) => (
+              <Publication key={pub.title} pub={pub} />
+            ))}
+        </div>
+      </Section>
 
-      {/* Reproduction Studies */}
-      <section id="reproductions">
-        <h2 className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">
-          Reproduction Studies
-        </h2>
-        <p className="text-sm text-muted-foreground mb-8">
-          Independent reproductions of 8 CVPR/MICCAI 2024 papers across six research areas, each rebuilt end-to-end on a single free-tier T4 GPU.
+      <Section title="Reproductions" id="reproductions">
+        <p className="mb-8 max-w-[62ch] text-muted-foreground leading-relaxed">
+          Independent reproductions of 8 CVPR and MICCAI 2024 papers across six
+          research areas, each rebuilt end-to-end on a single free-tier T4 GPU.
         </p>
-        <div className="space-y-6">
-          {reproductionStudies.map((study, i) => (
-            <motion.div
+        <div className="border-b border-border">
+          {reproductionStudies.map((study) => (
+            <article
               key={study.paper}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="rounded-xl border border-border/60 bg-card overflow-hidden"
+              className="grid gap-4 border-t border-border py-8 md:grid-cols-[1fr_16rem] md:gap-10"
             >
-              <div className="p-6">
-                <div className="flex items-start gap-3 mb-5">
-                  <div className="p-2 rounded-md bg-muted shrink-0">
-                    <GitMerge className="h-4 w-4 text-muted-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">{study.paper}</h3>
-                    <p className="text-xs text-muted-foreground">
-                      {study.authors} · {study.venue} · {study.year}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Metric result */}
-                <div className="grid grid-cols-2 gap-3 mb-3">
-                  <div className="bg-muted/40 rounded-lg p-3 text-center">
-                    <p className="text-xs text-muted-foreground mb-1">Metric</p>
-                    <p className="text-sm font-mono font-bold">{study.metric}</p>
-                  </div>
-                  <div className="bg-primary/5 border border-primary/20 rounded-lg p-3 text-center">
-                    <p className="text-xs text-primary mb-1">Reproduced</p>
-                    <p className="text-sm font-mono font-bold">{study.result}</p>
-                  </div>
-                </div>
-                <p className="text-xs text-muted-foreground mb-5 italic">
+              <div>
+                <h3 className="font-medium leading-snug">{study.paper}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {study.authors}, {study.venue} {study.year}
+                </p>
+                <p className="mt-3 text-muted-foreground leading-relaxed max-w-[62ch]">
                   {study.note}
                 </p>
-
-                {/* Insights */}
-                <div>
-                  <p className="text-xs font-mono text-primary uppercase tracking-widest mb-2">
-                    Highlights
-                  </p>
-                  <ul className="space-y-1.5">
-                    {study.insights.map((insight) => (
-                      <li
-                        key={insight}
-                        className="flex items-start gap-2 text-xs text-muted-foreground"
-                      >
-                        <span className="mt-1.5 h-1 w-1 rounded-full bg-primary shrink-0" />
-                        {insight}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+                  {study.insights.map((insight) => (
+                    <li key={insight} className="pl-4 -indent-4">
+                      <span aria-hidden className="text-primary">
+                        -{" "}
+                      </span>
+                      {insight}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </motion.div>
+              <div className="md:text-right">
+                <p className="text-sm text-muted-foreground">{study.metric}</p>
+                <p className="mt-1 font-display text-lg font-semibold tabular">
+                  {study.result}
+                </p>
+              </div>
+            </article>
           ))}
         </div>
-      </section>
-    </div>
+      </Section>
+    </>
   );
 }

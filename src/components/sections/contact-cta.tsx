@@ -1,73 +1,39 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight, Mail } from "lucide-react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+﻿import Link from "next/link";
 
 export function ContactCTA() {
   return (
-    <section className="py-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="rounded-xl border border-border bg-card p-8 sm:p-12"
+    <section className="bg-primary text-primary-foreground py-20 md:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <h2 className="font-display text-4xl md:text-7xl font-semibold tracking-tight leading-[1.02] max-w-4xl">
+          Open to Software Engineering roles (in Data and AI) from October 2026.
+        </h2>
+        <a
+          href="mailto:mimo.mohapatra@gmail.com"
+          className="mt-8 inline-block font-display text-2xl md:text-4xl underline decoration-current decoration-2 underline-offset-[0.3em] hover:opacity-80 transition-opacity break-all"
         >
-          <p className="text-xs font-mono text-primary uppercase tracking-widest mb-4">
-            Contact
-          </p>
-          <h2 className="text-3xl font-bold mb-4">
-            Open to AI/ML engineer roles
-          </h2>
-          <p className="text-muted-foreground max-w-lg mb-8 leading-relaxed">
-            Available full-time from October 2026. Looking for AI engineer and
-            MLOps positions. Also open to research collaborations in healthcare
-            AI and multi-agent systems.
-          </p>
-
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/contact"
-              className={cn(buttonVariants({ size: "lg" }), "gap-2")}
-            >
-              Contact me
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <a
-              href="mailto:mimo.mohapatra@gmail.com"
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }), "gap-2")}
-            >
-              <Mail className="h-4 w-4" />
-              mimo.mohapatra@gmail.com
-            </a>
-          </div>
-
-          <div className="flex gap-6 mt-8 pt-8 border-t border-border/30">
-            <a
-              href="https://github.com/mimo1999"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <FaGithub className="h-4 w-4" />
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/maitreya-mohapatra"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <FaLinkedin className="h-4 w-4" />
-              LinkedIn
-            </a>
-          </div>
-        </motion.div>
+          mimo.mohapatra@gmail.com
+        </a>
+        <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+          <a
+            href="https://github.com/mimo1999"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-current/40 hover:decoration-current transition-colors"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/maitreya-mohapatra"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-current/40 hover:decoration-current transition-colors"
+          >
+            LinkedIn
+          </a>
+          <Link href="/contact" className="underline decoration-current/40 hover:decoration-current transition-colors">
+            Contact form
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -1,111 +1,45 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, BookOpen, FlaskConical, GitMerge } from "lucide-react";
-import { SectionHeader } from "./section-header";
-import { Card, CardContent } from "@/components/ui/card";
-
-const researchAreas = [
-  {
-    icon: BookOpen,
-    title: "Masters Thesis",
-    subtitle: "AdLD Biomarker Detection",
-    description:
-      "Multimodal time-resolved detection of laryngeal dystonia biomarkers - a context-window TCN fusing audio with glottal area waveform via bidirectional cross-modal attention. 0.86 patient-level accuracy; manuscript submitted to the Journal of Voice.",
-    tags: ["PyTorch", "TCN", "Multimodal"],
-    href: "/research#thesis",
-  },
-  {
-    icon: FlaskConical,
-    title: "Research Projects",
-    subtitle: "Interpretable ML for Clinical Risk",
-    description:
-      "Benchmarked 10 model families on MIMIC-IV chemotherapy cohorts - an Explainable Boosting Machine reached AUROC 0.8262 against CatBoost's 0.8180 on identical features.",
-    tags: ["EBM / GAM", "MIMIC-IV", "CatBoost"],
-    href: "/research#projects",
-  },
-  {
-    icon: GitMerge,
-    title: "Reproduction Studies",
-    subtitle: "8 CVPR/MICCAI 2024 Papers",
-    description:
-      "Independent reproductions of eight papers across six research areas (detection, super-resolution, diffusion, point clouds, compressive imaging, medical VLMs), each rebuilt on a single free-tier T4 GPU.",
-    tags: ["PyTorch", "Computer Vision", "CVPR 2024"],
-    href: "/research#reproductions",
-  },
-];
+import { Section } from "./section";
 
 export function ResearchPreview() {
   return (
-    <section className="py-24 bg-muted/20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between gap-4 mb-12">
-          <SectionHeader
-            eyebrow="Research"
-            title="Academic Work"
-            description="Thesis research, interpretable ML for clinical risk, and independent paper reproductions."
-            className="mb-0"
-          />
+    <Section title="Research" href="/research" linkLabel="All research">
+      <div className="grid gap-10 md:grid-cols-12">
+        <div className="md:col-span-7">
+          <h3 className="font-display text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
+            Multimodal detection of laryngeal dystonia biomarkers
+          </h3>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Master&apos;s thesis. A context-window TCN fuses audio with glottal
+            area waveform through bidirectional cross-modal attention and
+            reaches 0.86 patient-level accuracy. Manuscript submitted to the
+            Journal of Voice.
+          </p>
           <Link
-            href="/research"
-            className="hidden sm:inline-flex items-center gap-1 text-sm text-primary font-medium hover:gap-2 transition-all whitespace-nowrap"
+            href="/research#thesis"
+            className="mt-4 inline-block text-sm underline decoration-border hover:decoration-primary transition-colors"
           >
-            Full research page
-            <ArrowRight className="h-3.5 w-3.5" />
+            Read the abstract
           </Link>
         </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {researchAreas.map((area, i) => {
-            const Icon = area.icon;
-            return (
-              <motion.div
-                key={area.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-              >
-                <Link href={area.href}>
-                  <Card className="h-full hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 group cursor-pointer">
-                    <CardContent className="pt-6 space-y-4">
-                      <div className="flex items-center gap-2">
-                        <div className="p-2 rounded-md bg-primary/10">
-                          <Icon className="h-4 w-4 text-primary" />
-                        </div>
-                        <div>
-                          <p className="text-xs text-muted-foreground font-mono">
-                            {area.title}
-                          </p>
-                          <p className="text-sm font-semibold">{area.subtitle}</p>
-                        </div>
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {area.description}
-                      </p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {area.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="inline-flex items-center gap-1 text-xs text-primary font-medium group-hover:gap-2 transition-all">
-                        Learn more
-                        <ArrowRight className="h-3 w-3" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              </motion.div>
-            );
-          })}
+        <div className="md:col-span-5 space-y-8">
+          <div className="border-t border-border pt-5">
+            <h3 className="font-medium">Interpretable ML for clinical risk</h3>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              10 model families on MIMIC-IV chemotherapy cohorts. An Explainable
+              Boosting Machine reaches AUROC 0.8262 against CatBoost&apos;s
+              0.8180 on identical features.
+            </p>
+          </div>
+          <div className="border-t border-border pt-5">
+            <h3 className="font-medium">Reproductions of 8 CVPR/MICCAI 2024 papers</h3>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              Detection, super-resolution, diffusion, point clouds and medical
+              VLMs, each rebuilt on a single free-tier T4 GPU.
+            </p>
+          </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

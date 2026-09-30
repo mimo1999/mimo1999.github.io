@@ -1,47 +1,27 @@
-import { ProjectCard } from "@/components/projects/project-card";
+import { ProjectRow } from "@/components/projects/project-row";
+import { PageTitle } from "@/components/sections/section";
 import { projects } from "@/data/projects";
-import { SectionHeader } from "@/components/sections/section-header";
 
 export const metadata = {
   title: "Projects - Maitreya Mohapatra",
   description:
-    "Production ML systems, healthcare AI, and enterprise deployments.",
+    "Agentic and RAG systems, healthcare AI, computer vision and data platforms.",
 };
 
 export default function ProjectsPage() {
-  const categories = [
-    { key: "healthcare-ai", label: "Healthcare AI" },
-    { key: "genai", label: "Generative AI" },
-    { key: "computer-vision", label: "Computer Vision" },
-    { key: "fintech", label: "FinTech" },
-    { key: "mlops", label: "MLOps" },
-    { key: "infrastructure", label: "Infrastructure" },
-  ] as const;
-
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <SectionHeader
-        eyebrow="Portfolio"
-        title="All Projects"
-        description="Agentic and RAG systems, healthcare AI, computer vision, and data platforms."
+    <>
+      <PageTitle
+        title="Projects"
+        lead="Agentic and RAG systems, healthcare AI, computer vision and data platforms."
       />
-
-      {categories.map((cat) => {
-        const filtered = projects.filter((p) => p.category === cat.key);
-        if (filtered.length === 0) return null;
-        return (
-          <div key={cat.key} className="mb-16">
-            <h2 className="text-lg font-semibold mb-6 text-muted-foreground uppercase text-xs tracking-widest font-mono">
-              {cat.label}
-            </h2>
-            <div className="grid sm:grid-cols-2 gap-6">
-              {filtered.map((project, i) => (
-                <ProjectCard key={project.slug} project={project} index={i} />
-              ))}
-            </div>
-          </div>
-        );
-      })}
-    </div>
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 pb-24">
+        <div className="border-b border-border">
+          {projects.map((project) => (
+            <ProjectRow key={project.slug} project={project} />
+          ))}
+        </div>
+      </div>
+    </>
   );
 }

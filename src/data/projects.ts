@@ -13,6 +13,7 @@ export interface Project {
   category: "healthcare-ai" | "genai" | "mlops" | "infrastructure" | "computer-vision" | "fintech";
   status: "production" | "research" | "open-source";
   architecture?: string[];
+  image?: { src: string; alt: string; width: number; height: number };
   benchmarks?: { label: string; value: string; note?: string }[];
 }
 
@@ -66,6 +67,12 @@ export const projects: Project[] = [
     category: "healthcare-ai",
     status: "research",
     github: "https://github.com/mimo1999/asd_detector",
+    image: {
+      src: "/images/projects/adld.png",
+      alt: "AdLD annotation and analysis tool: endoscopic video with synchronized glottal area waveform, audio waveform and spectrogram, and a biomarker event table",
+      width: 1562,
+      height: 908,
+    },
   },
   {
     title: "ChemoGAM",
@@ -164,6 +171,12 @@ export const projects: Project[] = [
     category: "infrastructure",
     status: "open-source",
     github: "https://github.com/mimo1999/GeoPulse",
+    image: {
+      src: "/images/projects/geopulse.png",
+      alt: "GeoPulse Global Activity Monitor: world map coloured by country activity index, with countries tracked and critical and high counts",
+      width: 1280,
+      height: 640,
+    },
   },
   {
     title: "Clinical RAG",
@@ -216,6 +229,12 @@ export const projects: Project[] = [
     // Repo name genuinely contains the "Clininal" typo - verified against
     // career_kit/projects/clinical-rag.md; the corrected spelling 404s.
     github: "https://github.com/mimo1999/Clininal_guideline_RAG",
+    image: {
+      src: "/images/projects/clinical-rag.png",
+      alt: "Clinical RAG chat interface: question box for the indexed German gynecologic-oncology guidelines",
+      width: 1024,
+      height: 391,
+    },
   },
   {
     title: "Research Swarm",
@@ -269,6 +288,12 @@ export const projects: Project[] = [
     status: "open-source",
     github: "https://github.com/mimo1999/research-swarm",
     demo: "https://huggingface.co/spaces/maitreya18/research-swarm",
+    image: {
+      src: "/images/projects/swarm.png",
+      alt: "Research Swarm interface: model, deployment and depth settings beside the research question box with audience selector",
+      width: 1600,
+      height: 1000,
+    },
   },
   {
     title: "Flowify",
@@ -322,6 +347,12 @@ export const projects: Project[] = [
     status: "open-source",
     github: "https://github.com/mimo1999/Flowify_toolkit",
     demo: "https://flowify-7vcn.onrender.com/",
+    image: {
+      src: "/images/projects/flowify.png",
+      alt: "Flowify call graph of a Python repository with a Change Impact panel showing risk level, callers and DB operations",
+      width: 1917,
+      height: 797,
+    },
   },
   {
     title: "Hidden Shape Reconstruction",

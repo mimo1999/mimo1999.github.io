@@ -1,111 +1,57 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Download, Mail } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { ArrowDown } from "lucide-react";
+
+const lines = ["AI engineer building", "agentic and RAG systems", "that hold up in production."];
+
+const ease = [0.16, 1, 0.3, 1] as const;
 
 export function Hero() {
   return (
-    <section className="relative min-h-[calc(100dvh-4rem)] flex items-center overflow-hidden">
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-        style={{
-          backgroundImage: `linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)`,
-          backgroundSize: "50px 50px",
-        }}
-      />
-
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="max-w-3xl">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center px-2.5 py-1 rounded-md border border-border text-muted-foreground text-xs font-mono mb-8"
-          >
-            Available full-time from Oct 2026
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] mb-6 text-balance"
-          >
-            Building AI systems that move from{" "}
-            <span className="text-primary">research to production</span>
-          </motion.h1>
-
-          {/* Role tags */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap gap-2 mb-6"
-          >
-            {["AI Engineer", "MLOps", "Healthcare AI"].map((tag) => (
-              <span
-                key={tag}
-                className="text-sm font-mono text-muted-foreground border border-border/60 rounded-md px-2.5 py-0.5"
-              >
-                {tag}
-              </span>
-            ))}
-          </motion.div>
-
-          {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-2xl"
-          >
-            Developing production-ready machine learning systems, multimodal
-            healthcare AI solutions, and scalable infrastructure for enterprise
-            applications.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap gap-3"
-          >
-            <Link
-              href="/projects"
-              className={cn(buttonVariants({ size: "lg" }), "gap-2 font-medium")}
+    <section className="mx-auto max-w-6xl px-5 sm:px-8 pt-16 pb-20 md:pt-24 md:pb-28">
+      <h1 className="font-display text-[2.4rem] leading-[1.04] font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+        {lines.map((line, i) => (
+          <span key={line} className="block overflow-hidden pb-1">
+            <motion.span
+              className="block"
+              initial={{ y: "105%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.9, delay: 0.08 * i, ease }}
             >
-              View Projects
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <a
-              href="/resume.pdf"
-              download
-              className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
-                "gap-2 font-medium"
+              {i === 1 ? (
+                <>
+                  <span className="text-primary">agentic</span> and RAG systems
+                </>
+              ) : (
+                line
               )}
-            >
-              <Download className="h-4 w-4" />
-              Download Resume
-            </a>
-            <Link
-              href="/contact"
-              className={cn(
-                buttonVariants({ variant: "ghost", size: "lg" }),
-                "gap-2 font-medium"
-              )}
-            >
-              <Mail className="h-4 w-4" />
-              Contact
-            </Link>
-          </motion.div>
+            </motion.span>
+          </span>
+        ))}
+      </h1>
+
+      <div className="mt-10 grid gap-8 md:grid-cols-12">
+        <p className="md:col-span-6 text-lg leading-relaxed text-muted-foreground">
+          Three years building AI systems and deployments across fintech,
+          healthcare and industry. M.Sc. AI at FAU, available from October 2026.
+        </p>
+        <div className="md:col-span-6 md:justify-self-end flex flex-wrap items-center gap-x-8 gap-y-4">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 rounded-sm bg-foreground px-5 py-3 text-sm font-medium text-background transition-transform active:scale-[0.98] hover:bg-primary"
+          >
+            See projects
+            <ArrowDown className="h-4 w-4" />
+          </Link>
+          <a
+            href="/resume.pdf"
+            download
+            className="text-sm underline decoration-border hover:decoration-primary transition-colors"
+          >
+            Download resume
+          </a>
         </div>
       </div>
     </section>

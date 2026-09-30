@@ -1,5 +1,5 @@
-import { Hero } from "@/components/hero/hero";
-import { AchievementBanner } from "@/components/sections/achievement-banner";
+﻿import { Hero } from "@/components/hero/hero";
+import { Showcase } from "@/components/sections/showcase";
 import { FeaturedProjects } from "@/components/sections/featured-projects";
 import { ResearchPreview } from "@/components/sections/research-preview";
 import { ExperienceTimeline } from "@/components/sections/experience-timeline";
@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <AchievementBanner />
+      <ExperienceTimeline />
+      <Showcase />
       <FeaturedProjects />
       <ResearchPreview />
-      <ExperienceTimeline />
       <SkillsSection />
       <ContactCTA />
     </>
