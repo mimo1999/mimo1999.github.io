@@ -213,25 +213,28 @@ export const awards = [
 
 export const patents = [
   {
-    title: "ML systems for cash-flow forecasting",
-    subtitle: "for professional employer organizations",
-    number: "US-12657596-B2",
-    year: "2025",
+    title:
+      "Machine learning (ML)-based system and method for predicting financial transaction patterns",
+    number: "US 12,657,596 B2",
+    application: "Appl. 18/305,483, filed Apr 2023, published as US 2024/0354786 A1",
+    year: "2026",
     status: "granted" as const,
-    // career_kit lists https://patents.google.com/patent/US12657596B2/en, but that
-    // page 404s - likely not yet indexed. Left unlinked so the number still shows
-    // without shipping a dead link; add `url` once Google Patents picks it up.
-    url: undefined as string | undefined,
+    assignee: "HighRadius Corporation",
+    // Source: USPTO Official Gazette, week of 16 Jun 2026.
+    url: "https://patentsgazette.uspto.gov/week24/OG/html/1547-3/US12657596-20260616.html",
     description:
-      "End-to-end ML system for enterprise cash-flow forecasting with adaptive model selection and drift-aware retraining pipeline.",
+      "Predicts the date on which customers and vendors will pay open invoices. Invoices are grouped by granularity level, customers are bucketed by payment frequency (weekly to annual), and date-shift payment-pattern features are generated. The pattern that best fits each customer is chosen by revenue concentration within an adherence window, a regression model built on boosted decision trees predicts the payment date, and performance is monitored with automatic retraining.",
   },
   {
-    title: "ML-based prediction of financial transaction patterns",
-    number: "US20250217746A1",
+    title:
+      "Machine learning based systems and methods for forecasting cash flow for a professional employer organization",
+    number: "US 2025/0217746 A1",
+    application: "Filed Dec 2023, published Jul 2025",
     year: "2025",
     status: "pending" as const,
+    assignee: "HighRadius Corporation",
     url: "https://patents.google.com/patent/US20250217746A1/en",
     description:
-      "Customer-behavior feature engineering framework for predicting financial transaction patterns across heterogeneous enterprise datasets.",
+      "Forecasts payroll cash flow for professional employer organizations, whose payment cycles run 2-4 days. Generates frequency-, distance- and seasonality-based features per employee, clusters employees with DBSCAN or K-means, and sums the cluster-level projections into an aggregate forecast.",
   },
 ];

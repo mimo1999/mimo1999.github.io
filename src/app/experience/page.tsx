@@ -80,7 +80,7 @@ export default function ExperiencePage() {
         </div>
       </Section>
 
-      <Section title="Patents">
+      <Section title="Patents" id="patents">
         <div className="border-b border-border">
           {patents.map((patent) => (
             <div
@@ -94,7 +94,14 @@ export default function ExperiencePage() {
                 </p>
               </div>
               <p className="text-sm text-muted-foreground md:text-right">
-                {patent.number}
+                <a
+                  href={patent.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-border hover:decoration-primary transition-colors"
+                >
+                  {patent.number}
+                </a>
                 <br />
                 {patent.status === "granted" ? "Granted" : "Pending"}, {patent.year}
               </p>
