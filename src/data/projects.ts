@@ -171,6 +171,7 @@ export const projects: Project[] = [
     category: "infrastructure",
     status: "open-source",
     github: "https://github.com/mimo1999/GeoPulse",
+    demo: "https://mimo1999.github.io/GeoPulse/",
     image: {
       src: "/images/projects/geopulse.png",
       alt: "GeoPulse Global Activity Monitor: world map coloured by country activity index, with countries tracked and critical and high counts",
