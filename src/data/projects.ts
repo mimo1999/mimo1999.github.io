@@ -10,7 +10,7 @@ export interface Project {
   github?: string;
   demo?: string;
   featured: boolean;
-  category: "healthcare-ai" | "genai" | "mlops" | "infrastructure" | "computer-vision" | "fintech";
+  category: "healthcare-ai" | "genai" | "mlops" | "infrastructure" | "computer-vision" | "fintech" | "software";
   status: "production" | "research" | "open-source";
   architecture?: string[];
   image?: { src: string; alt: string; width: number; height: number };
@@ -23,9 +23,9 @@ export const projects: Project[] = [
     slug: "clinical-voice-diagnostics",
     tagline: "Multimodal deep learning for detecting laryngeal dystonia biomarkers with event-level timestamps",
     description:
-      "Master's thesis: a context-window TCN with bidirectional cross-modal attention fuses audio and glottal-area waveform to detect four clinically defined biomarkers of adductor laryngeal dystonia, emitting frame-level events with onset/offset times. Manuscript submitted to the Journal of Voice.",
+      "Master's thesis: a context-window TCN with bidirectional cross-modal attention fuses audio and glottal-area waveform to detect four clinically defined biomarkers of adductor laryngeal dystonia, emitting frame-level events with onset/offset times. A pilot study on 28 recordings; accepted at the Journal of Voice.",
     longDescription:
-      "Frames adductor laryngeal dystonia (AdLD) detection as supervised multimodal sequence labeling instead of a single utterance-level label. Four biomarkers (micromotions, oscillatory breaks, motion irregularities, tremor) each get their own detector over a shared preprocessing pipeline, at their own temporal scale (20-300 ms hops, depth-tuned receptive fields). A context-window Temporal Convolutional Network fuses acoustic features with high-speed-videoendoscopy-derived glottal area waveform through symmetric bidirectional cross-attention and learned gated fusion, then aggregates frame-level events into a patient-level diagnosis. The output is a timeline a clinician can check against the video, served through a Python clinical GUI that runs on standard CPU hardware. Manuscript submitted to the Journal of Voice (Mohapatra, Döllinger, Patel); funded by Indiana CTSI / NIH #UL1TR002529.",
+      "Frames adductor laryngeal dystonia (AdLD) detection as supervised multimodal sequence labeling instead of a single utterance-level label. Four biomarkers (micromotions, oscillatory breaks, motion irregularities, tremor) each get their own detector over a shared preprocessing pipeline, at their own temporal scale (20-300 ms hops, depth-tuned receptive fields). A context-window Temporal Convolutional Network fuses acoustic features with high-speed-videoendoscopy-derived glottal area waveform through symmetric bidirectional cross-attention and learned gated fusion, then aggregates frame-level events into a patient-level diagnosis. The output is a timeline a clinician can check against the video, served through a Python clinical GUI that runs on standard CPU hardware. A pilot study (28 recordings, 13 patients and 15 controls, one centre), accepted at the Journal of Voice (Mohapatra, Döllinger, Patel); funded by Indiana CTSI / NIH #UL1TR002529.",
     technologies: [
       "PyTorch",
       "Dilated TCN",
@@ -37,16 +37,16 @@ export const projects: Project[] = [
       "Python",
     ],
     metrics: [
-      { label: "Patient Accuracy", value: "0.86" },
-      { label: "F1 Score", value: "0.76" },
-      { label: "IoU (Event)", value: "0.60" },
+      { label: "Patient Acc. (Sustained)", value: "0.96" },
+      { label: "Patient Acc. (Connected)", value: "0.76" },
+      { label: "Recordings", value: "28" },
       { label: "Biomarkers", value: "4" },
     ],
     benchmarks: [
-      { label: "Patient-level diagnostic accuracy", value: "0.86" },
-      { label: "Event-level F1", value: "0.76" },
-      { label: "Event-level localization", value: "0.60 IoU / 0.61 recall" },
-      { label: "Connected-speech comparison", value: "Best F1 on all 4 biomarkers", note: "vs BiLSTM, CatBoost, SVM, logistic regression" },
+      { label: "Patient-level accuracy, sustained phonation", value: "0.960 ± 0.085", note: "10 random patient-level splits, held-out test; 13 patients, 15 controls" },
+      { label: "Patient-level accuracy, connected speech", value: "0.760 ± 0.184", note: "same splits; accuracy depends on speech condition" },
+      { label: "Frame-level F1, sustained phonation (subject-independent)", value: "0.691 motion irregularities / 0.667 tremor", note: "leave-one-subject-out" },
+      { label: "Baselines", value: "Highest mean F1, overlapping SDs", note: "vs BiLSTM, CatBoost, SVM, logistic regression; not claimed as superiority" },
     ],
     highlights: [
       "Frame-level sequence labeling of 4 named biomarkers with onset/offset times",
@@ -353,6 +353,117 @@ export const projects: Project[] = [
       alt: "Flowify call graph of a Python repository with a Change Impact panel showing risk level, callers and DB operations",
       width: 1917,
       height: 797,
+    },
+  },
+  {
+    title: "Lantern",
+    slug: "lantern",
+    tagline: "Permission-aware multi-tenant RAG with authorization enforced inside the vector query",
+    description:
+      "RAG service where tenant, scope and role filters are bound parameters inside a single pgvector query, built from the verified JWT, so text a user may not read never reaches the LLM. Isolation is measured with an adversarial suite: 138 attack queries, 0 leaks.",
+    longDescription:
+      "Answers questions over shared documents (visible to every organization) and tenant documents (visible only to the uploading organization). Every query follows one fixed order: verified identity, authorization filter, filtered vector search, context, LLM. The filter is built in one place from the signed token and never from request input, so authorization does not depend on the model. PDFs with tables and figures are parsed with Docling; prose, Markdown tables and vision-model image captions are indexed separately, the last two with their own embedding model. Operations are covered too: an append-only audit log that fails closed, login lockout with emailed reset, token revocation, per-tenant rate limits, JSON logs, Prometheus metrics, and a chat UI that shows the retrieval trace of every answer. A self-built project on a small demo corpus with seeded demo tenants, not a deployed multi-customer service.",
+    technologies: [
+      "FastAPI",
+      "PostgreSQL",
+      "pgvector",
+      "Ollama",
+      "Docling",
+      "JWT",
+      "Prometheus",
+      "Docker Compose",
+      "Python",
+    ],
+    metrics: [
+      { label: "Attack Queries", value: "138" },
+      { label: "Unauthorized Chunks", value: "0" },
+      { label: "Authorized Probes Found", value: "22 / 22" },
+      { label: "Relevant Context", value: "35% → 78%" },
+    ],
+    benchmarks: [
+      { label: "Adversarial isolation suite", value: "0 leaks", note: "138 attack queries, 5 users, 552 chunks retrieved: 0 unauthorized, 0 cross-tenant, 0 canary leaks; scored against an independent oracle" },
+      { label: "Authorized access preserved", value: "22 / 22", note: "authorized probes still found; a test proves the suite fails when isolation is removed" },
+      { label: "Retrieval benchmark (19 queries, small demo corpus)", value: "Recall@1 0.947, MRR 0.974", note: "a benchmark, not production accuracy" },
+      { label: "Relevant context after relative cutoff", value: "35% → 78%", note: "no recall loss on the 19-query benchmark" },
+    ],
+    highlights: [
+      "Tenant, scope and role filters are bound SQL parameters inside the vector query, built from the verified JWT and never from request input",
+      "Adversarial isolation evaluation scored against an independent oracle, plus a test proving it fails when isolation is removed",
+      "Docling ingestion of PDFs: prose, Markdown tables and vision-model image captions indexed separately with their own embedding model",
+      "Relative relevance cutoff raised relevant context from 35% to 78% with no recall loss on the benchmark",
+      "Append-only audit log that fails closed (a failed audit write fails the request); a database trigger rejects UPDATE and DELETE",
+      "Login lockout with emailed reset, token revocation, per-tenant rate limits, JSON logs with request ids, Prometheus metrics",
+      "Retrieved text is escaped, delimited and declared untrusted; the LLM is skipped when nothing is retrievable",
+      "Chat UI with a retrieval trace for every answer: which passages, tables and figures were used, with scores",
+    ],
+    architecture: [
+      "JWT → verified identity (tenant, roles)",
+      "Authorization filter (one module)",
+      "Filtered pgvector search (prose + tables/images)",
+      "Context builder (escaped, marked untrusted)",
+      "Ollama generation with citations",
+      "Append-only audit log",
+    ],
+    featured: false,
+    category: "genai",
+    status: "open-source",
+    github: "https://github.com/mimo1999/lantern-rag",
+  },
+  {
+    title: "Movie Freak",
+    slug: "movie-freak",
+    tagline: "Realtime group movie picker: live on Vercel, Render and Supabase, with batched swipe sync and scheduled catalog jobs",
+    description:
+      "Swipe-to-decide web app: a group joins a session by code, everyone swipes on movies matching the host's filters, and the app lands on a movie the whole group will watch. React and Node with Socket.io on a ~547K-movie Postgres catalog, deployed on free plans and also runnable on Docker Compose and a local Kubernetes cluster.",
+    longDescription:
+      "A React/Vite client and a Node/Express + Socket.io backend. Per-session HMAC-signed tokens authenticate every request and raw votes never leave the server. The ~547K-movie catalog lives in Supabase Postgres, kept current by resumable jobs (bulk CSV load, weekly change-feed append, cast and trailer enrichment, and a popularity score from Wikipedia page views linked through Wikidata) run on GitHub Actions, and is separate from per-vote session rows so people swiping in the same room don't contend. The hosted API sits about a second from the database, so the client advances the deck locally and batches swipes: one request carries up to five votes and asks for the next five cards, recorded in a single transaction (measured on production: 19 swipes took 5 requests, next card in about 0.2 s). After a live user session the recommender was rebuilt around a per-member taste model over genre, keyword, cast, director, language and decade, with a fame prior, a language filter, richer cards (cast, director, runtime, trailer link) and a Keep Swiping flow that reopens a finished session without repeating the picks already shown. The same code also runs on Docker Compose (Postgres, Redis, two Node services, nginx ingress on a single port) and on a local Kind cluster with a CronJob for session cleanup and health probes. A self-built project on free plans: Render sleeps when idle, there are no user or traffic numbers, and the recommender's improvement is not proven by an offline simulation.",
+    technologies: [
+      "React",
+      "Vite",
+      "Node.js",
+      "Express",
+      "Socket.io",
+      "PostgreSQL",
+      "Supabase",
+      "Redis",
+      "GitHub Actions",
+      "Docker Compose",
+      "Kubernetes (Kind)",
+      "nginx",
+    ],
+    metrics: [
+      { label: "Movie Catalog", value: "~547K" },
+      { label: "Swipe Sync", value: "19 swipes, 5 requests" },
+      { label: "Next Card", value: "~0.2 s" },
+      { label: "Hosting", value: "Vercel + Render + Supabase" },
+    ],
+    highlights: [
+      "Realtime sessions over REST and Socket.io; per-session HMAC-signed tokens authenticate every request and raw votes never leave the server",
+      "Deployed end to end on free plans: React client on Vercel (CSP and security headers), Node API on Render, Postgres on Supabase through the IPv4 session pooler with verified TLS",
+      "Supabase public API locked down (row-level security on every table, no grants to the public roles); async errors answer 500 instead of crashing the process, per-member rate limits, member cap",
+      "Catalog kept current by resumable jobs on GitHub Actions (bulk load, weekly change feed, cast and trailer enrichment, Wikipedia page-view popularity via Wikidata) plus a daily purge of expired sessions",
+      "Batched swipe sync: the deck advances locally, one POST carries up to five swipes and requests the next five cards, recorded in one transaction; pending swipes flush on page hide",
+      "Recommender rebuilt after a live session: per-member taste model, fame prior, language filter, taste-guided pool refills, reason line on each card, covered by server unit tests",
+      "Keep Swiping reopens a finished session without repeating the top picks already shown, while still counting them toward taste",
+      "Also containerized on Docker Compose (nginx ingress as the only published port) and run on a local Kubernetes (Kind) cluster with a CronJob, probes and ingress-nginx",
+    ],
+    architecture: [
+      "React/Vite client (Vercel)",
+      "Node API (REST + Socket.io, auth, taste ranking) on Render",
+      "Supabase PostgreSQL (catalog + per-vote session rows)",
+      "GitHub Actions (weekly sync, enrichment, popularity; daily purge)",
+      "Docker Compose / Kind (local rehearsal)",
+    ],
+    featured: false,
+    category: "software",
+    status: "open-source",
+    github: "https://github.com/mimo1999/Movie-Freak",
+    demo: "https://movie-freak-alpha.vercel.app",
+    image: {
+      src: "/images/projects/movie-freak.png",
+      alt: "Movie Freak on a phone: a swipe card for Blade Runner 2049 with cast, director, trailer link and synopsis, beside the group's ranked top picks",
+      width: 1280,
+      height: 920,
     },
   },
   {
