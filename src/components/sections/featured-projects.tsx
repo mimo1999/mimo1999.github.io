@@ -10,6 +10,7 @@ const categoryLabels: Record<Project["category"], string> = {
   infrastructure: "Data & infrastructure",
   "computer-vision": "Computer vision",
   fintech: "FinTech",
+  software: "Software engineering",
 };
 
 function Entry({ project }: { project: Project }) {
